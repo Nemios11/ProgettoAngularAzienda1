@@ -1,0 +1,68 @@
+<div id="extbord">
+<form id="MioForm" (ngSubmit)= "onSubmit()" [formGroup]="myForm">
+    <div class="container">
+        <div class="form-group">
+          <label for="formGroupExampleInput"><h5>• Descrizione Intervento</h5></label>
+          <input type="text" class="form-control" formControlName="description" id="formGroupExampleInput" placeholder="Inserisci la descrizione dell'intervento.." 
+             minlength="10" autocomplete="off" required>
+        </div>
+        <div *ngIf ="myForm.get('description').invalid && (myForm.get('description').dirty || myForm.get('description').touched)" class="alert alert-danger">
+            <div *ngIf = "myForm.get('description').errors.required">
+                Descrizione Intervento is required.
+            </div>
+            <div *ngIf="myForm.get('description').errors.minlength"> Questo campo deve avere almeno 10 caratteri.. 
+            </div>
+        </div> 
+    
+        <div class="form-group">
+          <label for="formGroupExampleInput2"><h5>• Dettagli dell'intervento</h5> </label>
+          <textarea class="form-control" id="formGroupExampleInput2" maxlength="{{detailMaxLength}}" formControlName="detail" placeholder="Inserisci i dettagli dell'intervento.."
+          rows="4" cols="50" autocomplete="off" (input)="Dati.dettaglio = this.myForm.get('detail').value">{{Dati.dettaglio}}</textarea>
+          <div class="form-group">
+                <small>Caratteri disponibili: {{detailMaxLength-(Dati.dettaglio || "").length}}</small>
+            </div>
+        </div>
+    
+        <div class="form-group" >
+            <label for="formGroupExampleInput3"><h5>• Quando Intervenire</h5></label>
+                <input type="datetime-local" min="" class="form-control" id="formGroupExampleInput3" formControlName="datetime">
+                <div *ngIf ="myForm.get('datetime').invalid && myForm.get('datetime').dirty" class="alert alert-danger" required>
+                    Devi selezionare una data valida.
+                </div>  
+                <div *ngIf ="myForm.get('datetime').touched && myForm.get('datetime').invalid" class="alert alert-danger" required>
+                    Ricordati di selezionare la data!
+                </div>  
+        </div> 
+    
+        <div class="form-group">
+            <label for="formGroupExampleInput4"><h5>• Costo dell'intervento (€)</h5></label>
+                <input type="number" step="0.01" class="form-control" id="formGroupExampleInput4" formControlName="price" placeholder="Specifica il prezzo..." autocomplete="off" required>
+                <div *ngIf ="myForm.get('price').invalid && (myForm.get('price').dirty || myForm.get('price').touched)" class="alert alert-danger">
+                    <div *ngIf = "myForm.get('price').errors.required">
+                            Price is required.
+                    </div>   
+                </div>
+        </div>  
+        
+        <div class="form-group">
+            <label for="formGroupExampleInput5"><h5>• Manutentore da assegnare</h5></label><br>
+            <input type="text" name="Manutentori" class="form-control" id="formGroupExampleInput5" formControlName="worker" list="man_list" placeholder="Assegna il manutentore..." autocomplete="off" required>
+            <div *ngIf ="myForm.get('worker').invalid && (myForm.get('worker').dirty || myForm.get('worker').touched)" class="alert alert-danger">
+                <div *ngIf = "myForm.get('worker').errors.required">
+                        Devi assegnare un manutentore.
+                </div>  
+            </div>               
+            <datalist id="man_list" class="formGroupExampleInput5">
+                <option *ngFor = "let Persona of ms.getResults()">{{Persona[0]}}</option>
+            </datalist>
+            
+        </div>         
+
+       
+        <div class="form-groupbutton">
+         <button type="submit" class="bottone btn btn-outline-success" [disabled]="!myForm.valid">Submit</button>
+        </div> 
+    </div>
+    <br>
+      </form>
+</div>      

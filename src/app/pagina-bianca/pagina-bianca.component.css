@@ -1,0 +1,10 @@
+.error{
+    padding: 150px;
+    margin: 10%;
+    width: 80%;
+    height: 300%;
+    border-color: darkred;
+    border-style: double;
+    border-width: 2px;
+    font-size: 20px;
+}

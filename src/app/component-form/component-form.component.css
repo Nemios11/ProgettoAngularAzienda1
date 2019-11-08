@@ -1,0 +1,39 @@
+form{
+  margin-top: 70px;
+  margin-bottom: 20px;
+  margin-right: 90px;
+  margin-left: 90px;
+  background-color: rgb(185, 206, 144);
+  border-radius: 530px;
+}
+
+#extbord{
+  border: 5px;
+  border-color: rgb(185, 206, 144);
+  border-style: solid;
+  margin: 40px;
+  background-color: rgb(207, 231, 161);
+}
+
+h5{
+  color:  rgb(80, 92, 57);
+  font-style: italic;
+  font-weight: bolder;
+  list-style-type: square;
+}
+input.ng-valid{
+  border-left-width: 5px;
+  border-left-color: rgba(63, 202, 8, 0.753)
+}
+
+input.ng-invalid{
+  border-left-width: 5px;
+  border-left-color: rgba(243, 6, 6, 0.753) 
+}
+
+.bottone{
+color: rgb(0, 0, 0);
+background-color: rgb(74, 170, 36);
+}
+
+
