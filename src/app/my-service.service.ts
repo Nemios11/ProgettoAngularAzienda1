@@ -11,6 +11,7 @@ export class MyServiceService {
 
   results: any[];
   private apiUrl = 'https://reqres.in/api/users?per_page=100';
+  private apiUrlpost = 'https://reqres.in/api/users';
     
   
 
@@ -26,6 +27,12 @@ export class MyServiceService {
       })
     }
       return httpOption;
+  }
+
+  sendDates(dates: any){
+    var obs = this.httpClient.post(this.apiUrlpost, dates)
+    obs.subscribe((res: any)=>{console.log(res)})
+
   }
 
 
@@ -52,9 +59,7 @@ export class MyServiceService {
     return this.results;
   }
 
-  sendResults(dati: any){
-    console.log(dati)
-  }
+  
 
   
 

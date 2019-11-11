@@ -4,10 +4,6 @@ import { FormBuilder } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
 
 
-
-
-
-
 @Component({
   selector: 'app-component-form',
   templateUrl: './component-form.component.html',
@@ -32,19 +28,22 @@ export class ComponentFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private ms: MyServiceService) { 
      
   }
+ 
 
   validateDatelocal(valueDatalocal: string){
     var datetoday: any = new Date();
     var dateinput: any = new Date(valueDatalocal) ;
 
     if (dateinput >= datetoday){
+      this.Dati.date = valueDatalocal;
       return null;
 
     } else { 
         return {
           'error': "Assegna una data valida!"
-      }    
+        }    
     }   
+      
 
   }
 
@@ -69,7 +68,7 @@ export class ComponentFormComponent implements OnInit {
 
   onSubmit() {
 
-    this.ms.sendResults(this.Dati);
+    this.ms.sendDates(this.Dati);
   }
 
   onInput_Price(priceRef: any)
